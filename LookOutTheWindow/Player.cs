@@ -30,6 +30,7 @@ public class Player(MainScene scn) : IDisposable
     public float WalkParticleTimer = 0.0f;
     
     private bool _beforeFrostState = true;
+    private int _lastDirection = 1;
     
     public void Load()
     {
@@ -47,8 +48,10 @@ public class Player(MainScene scn) : IDisposable
         Position.X += Velocity.X * (float)deltaTime;
         
         // X Axis Movement
-        (bool isCollideWithTilemapX, BoundingBox? collideWithX) = scn.Tilemap.Intersects(window, Collider);
-            
+        var colX = BoundingBox.CreateFromTopLeft(Collider.Position, Collider.Size);
+        colX.Position += new Vector2(0.0f, 1f);
+        (bool isCollideWithTilemapX, BoundingBox? collideWithX) = scn.Tilemap.Intersects(window, colX);
+        
         if (isCollideWithTilemapX)
         {
             if (Velocity.X > 0.0f)
@@ -110,10 +113,12 @@ public class Player(MainScene scn) : IDisposable
     {
         if (window.IsKey(Key.A))
         {
+            _lastDirection = -1;
             Velocity.X -= Properties.Acceleration;
         }
         if (window.IsKey(Key.D))
         {
+            _lastDirection = 1;
             Velocity.X += Properties.Acceleration;
         }
     }
@@ -171,13 +176,13 @@ public class Player(MainScene scn) : IDisposable
             if (currentFrost)
             {
                 Game.Instance.AudioManager.PlaySFX("event:/sfx/freeze");
-                scn.ParticleSys.EmitParticle(20, Position.X, Position.Y, Color.FromArgb(255, 0, 205, 249),
+                scn.ParticleSys.EmitParticle(20, Position.X, Position.Y + Size.Y / 2.0f, Color.FromArgb(255, 255, 255, 255),
                     0.3f);
             }
             else
             {
                 Game.Instance.AudioManager.PlaySFX("event:/sfx/unfreeze");
-                scn.ParticleSys.EmitParticle(20, Position.X, Position.Y, Color.FromArgb(255, 255, 255, 255),
+                scn.ParticleSys.EmitParticle(20, Position.X, Position.Y + Size.Y / 2.0f, Color.FromArgb(255, 0, 205, 255),
                     0.3f);
             }
         }
@@ -208,7 +213,7 @@ public class Player(MainScene scn) : IDisposable
 
         MoveAndSlide(window, deltaTime);
         
-        if (Position.Y < -110.0f)
+        if (Position.Y < -110.0f || Position.Y >= 120.0f)
         {
             Die(window);
         }
@@ -217,19 +222,19 @@ public class Player(MainScene scn) : IDisposable
     public void Draw(GameWindow window)
     {
         window.DrawSprite(PlayerSprite, Position.X - Pivot.X, Position.Y - Pivot.Y, 
-            Color.White);
+            Color.White, 1.0f * _lastDirection, 1.0f);
     }
     
     public void DrawOutline(GameWindow window)
     {
         window.DrawSprite(OutlineSprite, Position.X - Pivot.X, Position.Y - Pivot.Y, 
-            Color.White);
+            Color.White, 1.0f * _lastDirection, 1.0f);
 
         var bbFrost = scn.FrostSys.WorldAABBToFrostAABB(Collider, window);
         if (scn.FrostSys.IntersectsFrostSpace(bbFrost))
         {
             window.DrawSprite(FrozenSprite, Position.X - Pivot.X, Position.Y - Pivot.Y, 
-                Color.White);
+                Color.White, 1.0f * _lastDirection, 1.0f);
         }
     }
 

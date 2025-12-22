@@ -207,6 +207,11 @@ public class GameTilemap(MainScene scn) : IDisposable
     
     public (bool, BoundingBox?) Intersects(GameWindow window, BoundingBox collider, bool checkMovingPlatforms = true, bool checkUpdownDoors = true)
     {
+        if (collider.Bottom < -160.0f)
+        {
+            return (true, BoundingBox.CreateFromTopLeft(new Vector2(-10000, -160.0f), new Vector2(20000, 5000)));
+        }
+        
         if (checkMovingPlatforms)
         {
             foreach (var platform in MovingPlatforms)

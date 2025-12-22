@@ -145,6 +145,11 @@ public class MainScene : Scene
                 Tilemap.ReloadSpecificMap(LastTilemap.Value);
             PlayerObj.Die(Game.Instance.MainWindow);
         }
+        
+        if (Game.Instance.MainWindow.IsKeyDown(Silk.NET.Input.Key.Number8))
+        {
+            PlayerObj.Position += new Vector2(256.0f, 0.0f);
+        }
     }
 
     public override void Dispose()

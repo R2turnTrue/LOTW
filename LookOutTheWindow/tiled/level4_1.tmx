@@ -22,7 +22,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Object">
-  <object id="8" name="ep_level5" x="256" y="0">
+  <object id="8" name="ep_level4_2" x="256" y="0">
    <point/>
   </object>
   <object id="9" name="UpdownDoor" x="57.6667" y="175.667">

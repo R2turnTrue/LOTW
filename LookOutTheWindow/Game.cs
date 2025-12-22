@@ -22,7 +22,7 @@ public class Game : IDisposable
             this,
             WindowOptions.Default with
             {
-                Size = new Vector2D<int>(1024, 1024),
+                Size = new Vector2D<int>(768, 768),
                 Title = "game",
                 WindowBorder = WindowBorder.Fixed
             },

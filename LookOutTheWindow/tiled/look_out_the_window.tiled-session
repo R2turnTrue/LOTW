@@ -3,11 +3,22 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level0.tmx",
+    "activeFile": "level5.tmx",
     "expandedProjectPaths": [
         "."
     ],
     "fileStates": {
+        "F:/LookOutTheWindow/LookOutTheWindow/bin/Release/net9.0/win-x64/publish/tiled/level2.tmx": {
+            "scale": 1.52890625,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 128.19621870209505,
+                "y": 127.86918753193666
+            }
+        },
+        "F:/LookOutTheWindow/LookOutTheWindow/bin/Release/net9.0/win-x64/publish/tiled/snow.tsx": {
+            "scaleInDock": 1
+        },
         "level0.tmx": {
             "expandedObjectLayers": [
                 2
@@ -15,8 +26,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 166.66666666666663,
-                "y": 131.66666666666663
+                "x": 128,
+                "y": 127.83333333333333
             }
         },
         "level1.tmx": {
@@ -26,19 +37,19 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 123.66666666666664,
-                "y": 126.33333333333334
+                "x": 128,
+                "y": 128.16666666666666
             }
         },
         "level2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
+            "scale": 2,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 147.33333333333334,
-                "y": 86.66666666666667
+                "x": 128,
+                "y": 127.75
             }
         },
         "level3.tmx": {
@@ -46,21 +57,21 @@
                 2
             ],
             "scale": 3,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 180.66666666666663,
-                "y": 112
+                "x": 160.66666666666666,
+                "y": 63.83333333333332
             }
         },
         "level4.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 3,
-            "selectedLayer": 1,
+            "scale": 2,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 139,
-                "y": 150.33333333333334
+                "x": 200,
+                "y": 116.75
             }
         },
         "level4_1.tmx": {
@@ -70,16 +81,38 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 164.66666666666663,
-                "y": 54.33333333333334
+                "x": 164,
+                "y": 95.16666666666667
+            }
+        },
+        "level4_2.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 149,
+                "y": 138.16666666666666
+            }
+        },
+        "level4_3.tmx": {
+            "expandedObjectLayers": [
+                2
+            ],
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 289.3333333333333,
+                "y": 88.16666666666667
             }
         },
         "level5.tmx": {
             "scale": 3,
-            "selectedLayer": 1,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 156,
-                "y": 99.33333333333334
+                "x": -61,
+                "y": 8.833333333333343
             }
         },
         "snow.tsx": {
@@ -95,14 +128,30 @@
     "map.width": 16,
     "openFiles": [
         "snow.tsx",
-        "level0.tmx"
+        "level0.tmx",
+        "level1.tmx",
+        "level2.tmx",
+        "level3.tmx",
+        "level4.tmx",
+        "level4_1.tmx",
+        "level4_2.tmx",
+        "level4_3.tmx",
+        "level5.tmx"
     ],
     "project": "look_out_the_window.tiled-project",
     "property.type": "float",
     "recentFiles": [
-        "level1.tmx",
+        "snow.tsx",
+        "level4.tmx",
+        "level4_1.tmx",
+        "level4_2.tmx",
+        "level4_3.tmx",
+        "level5.tmx",
+        "F:/LookOutTheWindow/LookOutTheWindow/bin/Release/net9.0/win-x64/publish/tiled/level2.tmx",
         "level0.tmx",
-        "snow.tsx"
+        "level1.tmx",
+        "level2.tmx",
+        "level3.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
