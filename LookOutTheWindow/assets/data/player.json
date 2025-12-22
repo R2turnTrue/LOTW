@@ -1,0 +1,8 @@
+﻿{
+  "GravityY": -800,
+  "JumpForce": 300,
+  "Acceleration": 15,
+  "MaxSpeed": 150,
+  "Deceleration": 600,
+  "DecelerationAir": 300
+}

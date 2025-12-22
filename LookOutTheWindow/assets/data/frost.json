@@ -1,0 +1,9 @@
+﻿{
+  "GrowSpeed": 0.4,
+  "FrostCount": 6,
+  "InitialSizeMin": 20,
+  "InitialSizeMax": 60,
+  "FrostIncreaseSpeed": 0.004,
+  "InitialStrengthMin": 1.0,
+  "InitialStrengthMax": 1.0
+}

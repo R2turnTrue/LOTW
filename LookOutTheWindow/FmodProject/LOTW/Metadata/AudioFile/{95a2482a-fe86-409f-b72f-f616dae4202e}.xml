@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{95a2482a-fe86-409f-b72f-f616dae4202e}">
+		<property name="assetPath">
+			<value>main_bgm.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14.988639455782312</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{082bce2f-ffe7-4ab7-aa79-86853bdc21a4}</destination>
+		</relationship>
+	</object>
+</objects>
