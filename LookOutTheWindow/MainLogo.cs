@@ -9,8 +9,8 @@ public class MainLogo : IDisposable
     public Sprite GameLogo;
     public Sprite Tutorial;
     
-    private float _characterOffset = 0.0f;
-    private float _logoOffset = 0.0f;
+    private float _characterOffset = -240.0f;
+    private float _logoOffset = 110.0f;
     private float _tutOffset = 0.0f;
     
     public void Load()
@@ -18,9 +18,6 @@ public class MainLogo : IDisposable
         FsCharacter = new Sprite(Game.Instance, "assets/sprites/fs_character.png");
         GameLogo = new Sprite(Game.Instance, "assets/sprites/logo.png");
         Tutorial = new Sprite(Game.Instance, "assets/sprites/tut.png");
-
-        _characterOffset = -240.0f;
-        _logoOffset = 110.0f;
     }
     
     public void Update(GameWindow window, float deltaTime)
@@ -35,10 +32,20 @@ public class MainLogo : IDisposable
             logoTarget = 0.0f;
             tutTarget = 100.0f;
         }
+        else
+        {
+        }
+
+        var off = deltaTime;
+        //off = float.Clamp(off, 0.0f, 1.0f);
         
-        _characterOffset = float.Lerp(_characterOffset, characterTarget, deltaTime * 3f);
-        _logoOffset = float.Lerp(_logoOffset, logoTarget, deltaTime * 3f);
-        _tutOffset = float.Lerp(_tutOffset, tutTarget, deltaTime * 3f);
+        if (off >= 1.0f)
+            off = 0.0f;
+        off *= 3;
+        
+        _characterOffset = float.Lerp(_characterOffset, characterTarget, off);
+        _logoOffset = float.Lerp(_logoOffset, logoTarget, off);
+        _tutOffset = float.Lerp(_tutOffset, tutTarget, off);
     }
     
     public void DrawBeforeFrost(GameWindow window, float deltaTime)

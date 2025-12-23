@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level5.tmx",
+    "activeFile": "level0.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -26,8 +26,8 @@
             "scale": 3,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 128,
-                "y": 127.83333333333333
+                "x": 32.333333333333336,
+                "y": 132.5
             }
         },
         "level1.tmx": {
@@ -142,16 +142,16 @@
     "property.type": "float",
     "recentFiles": [
         "snow.tsx",
-        "level4.tmx",
-        "level4_1.tmx",
-        "level4_2.tmx",
-        "level4_3.tmx",
         "level5.tmx",
-        "F:/LookOutTheWindow/LookOutTheWindow/bin/Release/net9.0/win-x64/publish/tiled/level2.tmx",
-        "level0.tmx",
-        "level1.tmx",
+        "level4_3.tmx",
+        "level4_2.tmx",
+        "level4_1.tmx",
+        "level4.tmx",
+        "level3.tmx",
         "level2.tmx",
-        "level3.tmx"
+        "level1.tmx",
+        "level0.tmx",
+        "F:/LookOutTheWindow/LookOutTheWindow/bin/Release/net9.0/win-x64/publish/tiled/level2.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
