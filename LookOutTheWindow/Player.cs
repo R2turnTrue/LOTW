@@ -29,6 +29,8 @@ public class Player(MainScene scn) : IDisposable
 
     public float WalkParticleTimer = 0.0f;
     
+    public bool CurrentFrost = false;
+    
     private bool _beforeFrostState = true;
     private int _lastDirection = 1;
     
@@ -170,10 +172,10 @@ public class Player(MainScene scn) : IDisposable
     public void Update(GameWindow window, double deltaTime)
     {
         var bbFrost = scn.FrostSys.WorldAABBToFrostAABB(Collider, window);
-        var currentFrost = scn.FrostSys.IntersectsFrostSpace(bbFrost);
-        if (currentFrost != _beforeFrostState)
+        CurrentFrost = scn.FrostSys.IntersectsFrostSpace(bbFrost);
+        if (CurrentFrost != _beforeFrostState)
         {
-            if (currentFrost)
+            if (CurrentFrost)
             {
                 Game.Instance.AudioManager.PlaySFX("event:/sfx/freeze");
                 scn.ParticleSys.EmitParticle(20, Position.X, Position.Y + Size.Y / 2.0f, Color.FromArgb(255, 255, 255, 255),
@@ -187,9 +189,9 @@ public class Player(MainScene scn) : IDisposable
             }
         }
 
-        _beforeFrostState = currentFrost;
+        _beforeFrostState = CurrentFrost;
         
-        if (currentFrost)
+        if (CurrentFrost)
         {
             return;
         }

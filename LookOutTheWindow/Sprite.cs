@@ -58,7 +58,7 @@ public class Sprite : IDisposable
         _gl = gl;
     }
 
-    public void Draw(GameWindow window, float x, float y, Color tint, float scaleX = 1.0f, float scaleY = 1.0f)
+    public void Draw(GameWindow window, float x, float y, Color tint, float scaleX = 1.0f, float scaleY = 1.0f, bool ignoreOffset = false)
     {
         _gl.BindTexture(GLEnum.Texture2D, Texture);
         _gl.ActiveTexture(TextureUnit.Texture0);
@@ -76,6 +76,12 @@ public class Sprite : IDisposable
             window.Viewport.Height, -1f, 1f);
         var view = 
             Matrix4x4.CreateTranslation(window.SpriteOffset.X, window.SpriteOffset.Y, 0.0f);
+        
+        if (ignoreOffset)
+        {
+            view = Matrix4x4.Identity;
+        }
+        
         var model = Matrix4x4.CreateScale(Width/2 * scaleX, -Height/2 * scaleY, 1f) *
             Matrix4x4.CreateTranslation(x, y, 0f);
 

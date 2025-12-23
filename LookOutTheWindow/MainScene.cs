@@ -16,11 +16,11 @@ public class MainScene : Scene
     public ParticleEmitterSystem ParticleSys;
 
     public Sprite GlassFrame;
-    public Sprite Tutorial;
     public Sprite FinalCredit;
     
     public GameTilemap.ImportedTilemap? LastTilemap = null;
-
+    
+    public MainLogo Logo;
     //public GameWindow SubWindow;
     
     public override void Load()
@@ -41,8 +41,10 @@ public class MainScene : Scene
         ParticleSys.Load();
         
         GlassFrame = new Sprite(Game.Instance, "assets/sprites/glass_frame.png");
-        Tutorial = new Sprite(Game.Instance, "assets/sprites/tut.png");
         FinalCredit = new Sprite(Game.Instance, "assets/sprites/finalcredit.png");
+        
+        Logo = new MainLogo();
+        Logo.Load();
         
         var mw = Game.Instance.MainWindow;
         PlayerObj.Position = mw.ViewportPosToWorld(Tilemap.TiledMaps[0].Spawn);
@@ -102,24 +104,26 @@ public class MainScene : Scene
         Tilemap.Update(Game.Instance.MainWindow, deltaTime, LastTilemap);
         Tilemap.Draw(Game.Instance.MainWindow, deltaTime);
         FinalCredit.Draw(mw, Tilemap.TiledMaps[^1].Offset.X, 0.0f, Color.White);
+        
         PlayerObj.Update(Game.Instance.MainWindow, deltaTime);
+        if (!PlayerObj.CurrentFrost)
+        {
+            Logo.Visible = false;
+        }
         PlayerObj.Draw(Game.Instance.MainWindow);
         
         ParticleSys.Draw(Game.Instance.MainWindow, (float) deltaTime);
         
-        var quad = mw.LocalQuad;
-        var shader = Game.Instance.FrostShader;
+        Logo.Update(mw, (float) deltaTime);
+        Logo.DrawBeforeFrost(mw, (float) deltaTime);
         
-        shader.Use();
-        shader.SetInteger("frostTexture", 0);
+        DrawFrost();
         
-        gl.ActiveTexture(TextureUnit.Texture0);
-        gl.BindTexture(TextureTarget.Texture2D, FrostSys.Texture);
-        quad.Draw(gl);
-        
-        Tutorial.Draw(mw, 0.0f, 0.0f, Color.White);
+        //Tutorial.Draw(mw, 0.0f, 0.0f, Color.White);
         
         PlayerObj.DrawOutline(Game.Instance.MainWindow);
+        
+        Logo.DrawAfterFrost(mw, (float) deltaTime);
         
         HangjuObj.Update(Game.Instance.MainWindow, deltaTime);
         HangjuObj.Draw(Game.Instance.MainWindow);
@@ -151,6 +155,21 @@ public class MainScene : Scene
             PlayerObj.Position += new Vector2(256.0f, 0.0f);
         }
     }
+    
+    public void DrawFrost()
+    {
+        var mw = Game.Instance.MainWindow;
+        var quad = mw.LocalQuad;
+        var shader = Game.Instance.FrostShader;
+        var gl = Game.Instance.Gl;
+        
+        shader.Use();
+        shader.SetInteger("frostTexture", 0);
+        
+        gl.ActiveTexture(TextureUnit.Texture0);
+        gl.BindTexture(TextureTarget.Texture2D, FrostSys.Texture);
+        quad.Draw(gl);
+    }
 
     public override void Dispose()
     {
@@ -161,8 +180,10 @@ public class MainScene : Scene
         // SubWindow.Dispose();
 
         GlassFrame.Dispose();
-        Tutorial.Dispose();
+        //Tutorial.Dispose();
         FinalCredit.Dispose();
+        
+        Logo.Dispose();
         
         Game.Instance.ChildWindows.Clear();
     }

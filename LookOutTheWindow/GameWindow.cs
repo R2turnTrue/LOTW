@@ -148,9 +148,9 @@ public class GameWindow : IDisposable
         );
     }
 
-    public void DrawSprite(Sprite sprite, float x, float y, Color tint, float scaleX = 1.0f, float scaleY = 1.0f)
+    public void DrawSprite(Sprite sprite, float x, float y, Color tint, float scaleX = 1.0f, float scaleY = 1.0f, bool ignoreOffset = false)
     {
-        sprite.Draw(this, x, y, tint, scaleX, scaleY);
+        sprite.Draw(this, x, y, tint, scaleX, scaleY, ignoreOffset);
     }
 
     public void Run()
